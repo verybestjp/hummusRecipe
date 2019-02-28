@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/hummus-recipe.svg)](https://badge.fury.io/js/hummus-recipe)
 [![Build Status](https://travis-ci.org/chunyenHuang/hummusRecipe.svg?branch=master)](https://travis-ci.org/chunyenHuang/hummusRecipe)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VKYRPLFE2PT7L&source=url)
 
 This is an easy recipe for [HummusJS](https://github.com/galkahana/HummusJS) with a high level class.
 
@@ -27,6 +28,7 @@ Feel free to open issues to help us!
 * [Coordinate System](#coordinate-system)
 * [Create a new PDF](#create-a-new-pdf)
 * [Modify an existing PDF](#modify-an-existing-pdf)
+* [PDF Pages/Info/Structure](#page-info)
 * [Append PDF](#append-pdf)
 * [Insert PDF](#insert-pdf)
 * [Overlay PDF](#overlay-pdf)
@@ -143,7 +145,7 @@ pdfDoc
     .text('Add some texts to an existing pdf file', 150, 300)
     .rectangle(20, 20, 40, 100)
     .comment('Add 1st comment annotaion', 200, 300)
-    .image('/path/to/image.jpg', {width: 300, keepAspectRatio: true})
+    .image('/path/to/image.jpg', 20, 100, {width: 300, keepAspectRatio: true})
     .endPage()
     // edit 2nd page
     .editPage(2)
@@ -151,6 +153,22 @@ pdfDoc
     .endPage()
     // end and save
     .endPDF();
+```
+
+## Page Info
+
+```javascript
+const pdfDoc = new HummusRecipe('input.pdf', 'output.pdf');
+console.log(pdfDoc.metadata);
+```
+
+### Print the pdf structure
+
+```javascript
+const pdfDoc = new HummusRecipe('input.pdf', 'output.pdf');
+recipe
+    .structure('pdf-structure.txt')
+    .endPDF(done);
 ```
 
 ## Append PDF
